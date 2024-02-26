@@ -10,8 +10,9 @@
         border: 1px solid white;
         padding: 10px;
         box-shadow: 1px 2px 8px 1px #888888;
-        width: 350px;
-        height: 800px;
+        width: 340px;
+        height: 500px;
+        margin-top: 80px;
     }
 
     .agree{
