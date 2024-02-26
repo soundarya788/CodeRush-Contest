@@ -1,16 +1,77 @@
-.body{
-    background: linear-gradient(to bottom right, red, yellow);
-}
+
 
 @media only screen and (min-width: 321px) and (max-width: 480px) {
+
+    body{
+        height: 200px;
+    }
     
     .term{
-        border: 1px solid;
+        border: 1px solid white;
         padding: 10px;
-        box-shadow: 5px 10px 8px 10px #888888;
-        width: 400px;
-        height: 400px;
+        box-shadow: 1px 2px 8px 1px #888888;
+        width: 350px;
+        height: 800px;
     }
+
+    .agree{
+        text-align: center;
+        margin-top: 50px;
+        margin-left: 70px;
+        position:absolute;
+        color:blue;
+        font-size:medium;
+        font-family: Arial, Helvetica, sans-serif;
+    
+    }
+
+    .rules{
+        font-family: Arial, Helvetica, sans-serif;
+        color: blue;
+    }
+
+   ul {
+     
+        padding: 0; 
+        font-family: Arial, sans-serif;
+        margin-left: 30px;
+      }
+      
+      ul li {
+        margin-bottom: 10px; 
+      }
+      
+      ul li::before {
+         color: #000; 
+        display: inline-block;
+        width: 1em; 
+        margin-left: -1em; 
+      }
+
+      .button {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 30px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-family: Arial, sans-serif;
+      }
+      .button:disabled {
+        background-color: #cccccc; 
+        cursor: not-allowed; 
+      }
+      
+      
+      .button:hover {
+        background-color: #45a049; 
+      }
+      .box{
+        margin-top:5px;
+      }
+    
+
+
 }
 
 @media only screen and (min-width: 481px) and (max-width: 768px) {
@@ -75,14 +136,64 @@
         margin-top: 100px;
         transform: scale(1.2);
         background-color: white;
-    
     }
 
     .agree{
         text-align: center;
-        margin-top: 330px;
+        margin-top: 50px;
+        margin-left: 150px;
+        position:absolute;
+        color:blue;
+        font-size:medium;
+        font-family: Arial, Helvetica, sans-serif;
     
     }
+
+    .rules{
+        font-family: Arial, Helvetica, sans-serif;
+        color: blue;
+    }
+
+   ul {
+     
+        padding: 0; 
+        font-family: Arial, sans-serif;
+        margin-left: 30px;
+      }
+      
+      ul li {
+        margin-bottom: 10px; 
+      }
+      
+      ul li::before {
+         color: #000; 
+        display: inline-block;
+        width: 1em; 
+        margin-left: -1em; 
+      }
+
+      .button {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 30px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-family: Arial, sans-serif;
+      }
+      .button:disabled {
+        background-color: #cccccc; 
+        cursor: not-allowed; 
+      }
+      
+      
+      .button:hover {
+        background-color: #45a049; 
+      }
+      .box{
+        margin-top:5px;
+      }
+    
 
     
 }
