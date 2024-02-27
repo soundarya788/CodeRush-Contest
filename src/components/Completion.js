@@ -1,8 +1,12 @@
 import React from 'react'
 
-function Completion() {
+function Completion({score}) {
   return (
-    <div>Completion</div>
+    <div>Completion
+
+<h2>Score: {score}</h2>
+    </div>
+    
   )
 }
 

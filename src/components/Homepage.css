@@ -231,7 +231,7 @@ ul {
 
 @media only screen and (min-width: 481px)  and (max-width: 769px) {
     .term{
-        border: 10px solid;
+        border: 10px solid white;
         padding: 10px;
         box-shadow: 1px 2px 8px 1px #888888;
         width: 370px;
@@ -627,7 +627,11 @@ ul {
     
 
       
-
+      @media screen and (max-width: 480px) {
+        .term, .agree, .button {
+          width: 100%;
+        }
+      }
 
 
 
