@@ -10,21 +10,35 @@ function Quizpage() {
             id: 1,
             question: "Which of the following is true regarding Babel?",
             options: ["Compiler", "Transpiler", "Both of the above", "None of the above"],
-            correctAnswer: "Paris",
+            correctAnswer: "Both of the the above",
             selectedOption: null,
         },
         {
             id: 2,
-            question: "Which of the following command is used to create react-js-app ?",
-            options: ["Pacific Ocean", "Atlantic Ocean", "Indian Ocean", "Arctic Ocean"],
-            correctAnswer: "Pacific Ocean",
+            question: "What is ReactJS primarily used for?",
+            options: [" user interfaces", "server-side applications", "Creating mobile apps", "All of the above"],
+            correctAnswer: "user interfaces",
             selectedOption: null,
         },
         {
             id: 3,
-            question: "What is the tallest mountain in the world?",
-            options: ["Mount Everest", "K2", "Kangchenjunga", "Lhotse"],
-            correctAnswer: "Mount Everest",
+            question: "How is data passed between React components?",
+            options: ["Through props", "Through state", "Through context", "All of the above"],
+            correctAnswer: "Through props",
+            selectedOption: null,
+        },
+        {
+            id: 4,
+            question: "In React, what does the term props stand for?",
+            options: ["Properties", "Parameters", "Functions", "None of the above"],
+            correctAnswer: "Properties",
+            selectedOption: null,
+        },
+        {
+            id: 5,
+            question: "In which language is React.js written?",
+            options: ["Python", "Java", "PHP", "Javascript"],
+            correctAnswer: "Javascript",
             selectedOption: null,
         },
     ]);
@@ -122,12 +136,16 @@ function Quizpage() {
                 <div className="completion-content"> 
                     <h2 className="completion-header">Quiz completed!</h2>
                     <p className="score">Your score is: {score}</p>
-                    <h3>Answers Selected:</h3>
+                    <h3 className='ans'>Answers Selected:</h3>
                     <ul>
+                
             {questions.map((question, index) => (
-                <li key={index}>
+                <div className='container'>
+                <li key={index} className="question-answer">
                     {question.question}: <span className={question.selectedOption ? 'selected-answer' : ''}>{question.selectedOption || 'No answer selected'}</span>
                 </li>
+                </div>
+            
             ))}
         </ul>
                 </div>

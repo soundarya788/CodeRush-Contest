@@ -81,19 +81,19 @@
     }
     
     .term{
-        border: 1px solid red;
+        border: 1px solid white;
         padding: 10px;
         box-shadow: 1px 2px 8px 1px #888888;
         width: 333px;
-        height: 500px;
+        height: 450px;
         margin-top: 50px;
-        margin-left: -11x;
+        margin-left: 40px;
         display: grid;
     }
 
     .agree{
         text-align: center;
-        margin-top: 400px;
+        margin-top: 380px;
         margin-left: 60px;
         position:absolute;
         color:blue;
