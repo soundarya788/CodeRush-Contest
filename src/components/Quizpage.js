@@ -1,16 +1,13 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
 import './Quizpage.css';
 
-
-
 function Quizpage() {
-
     const [questions] = useState([
         {
             id: 1,
             question: "Which of the following is true regarding Babel?",
             options: ["Compiler", "Transpiler", "Both of the above", "None of the above"],
-            correctAnswer: "Both of the the above",
+            correctAnswer: "Both of the above",
             selectedOption: null,
         },
         {
@@ -43,14 +40,14 @@ function Quizpage() {
         },
     ]);
 
-    const [minutes,setminutes] = useState(5);
-    const [seconds,setseconds] = useState(0);
-    const [redirect,setredirect] = useState(0);
+    const [minutes, setMinutes] = useState(5);
+    const [seconds, setSeconds] = useState(0);
+    const [startTime, setStartTime] = useState(null);
+    const [redirect, setRedirect] = useState(false);
     const [currentPage, setCurrentPage] = useState('quiz');
     const [score, setScore] = useState(0);
     const [selectedOption, setSelectedOption] = useState(null);
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-
 
     const handleAnswerSelection = (selectedAnswer) => {
         setSelectedOption(selectedAnswer);
@@ -59,16 +56,13 @@ function Quizpage() {
 
     const handleNextQuestion = () => {
         if (selectedOption === null) {
-            
             return;
         }
-
 
         if (currentQuestionIndex === questions.length - 1) {
             setCurrentPage('completion');
             calculateScore(); 
         } else {
-            
             setCurrentQuestionIndex(currentQuestionIndex + 1);
             setSelectedOption(null); 
         }
@@ -83,44 +77,40 @@ function Quizpage() {
         });
         setScore(tempScore);
     };
-    
 
     useEffect(() => {
         const interval = setInterval(() => {
-            if (seconds===0){
-                if(minutes===0){
+            if (seconds === 0) {
+                if (minutes === 0) {
                     clearInterval(interval);
-                    setredirect(true);}
-                    else{
-                        setminutes(minutes-1);
-                        setseconds(59);
-                    }
-
-                }else{
-                    setseconds(seconds-1);
+                    setRedirect(true);
+                } else {
+                    setMinutes(minutes - 1);
+                    setSeconds(59);
                 }
-            
-        },1000);
-        return () => clearInterval(interval)
+            } else {
+                setSeconds(seconds - 1);
+            }
+        }, 1000);
+
+        setStartTime(new Date());
+
+        return () => clearInterval(interval);
     }, [minutes,seconds]);
 
     useEffect(() => {
-        if(redirect){
-            window.location.href ='/Completion';
+        if (redirect) {
+            window.location.href = '/Completion';
         }
-    },[redirect]);
+    }, [redirect]);
 
-    const Minutes = minutes.toString().padStart(2, '0')
-    const Seconds = seconds.toString().padStart(2, '0')
+    const timeTaken = startTime ? ((new Date() - startTime) / 1000).toFixed(0) : 'N/A';
 
-    
-
-
-  return (
-    <div className="quiz-container"> 
+    return (
+        <div className="quiz-container">
             {currentPage === 'quiz' && (
-                <div className="quiz-content"> 
-                    <p className="timer">Time Remaining: {Minutes}:{Seconds}</p>
+                <div className="quiz-content">
+                    <p className="timer">Time Remaining: {minutes.toString().padStart(2, '0')}:{seconds.toString().padStart(2, '0')}</p>
                     <h3 className="question">{questions[currentQuestionIndex].question}</h3>
                     <ul className="options">
                         {questions[currentQuestionIndex].options.map((option, optionIndex) => (
@@ -133,26 +123,25 @@ function Quizpage() {
                 </div>
             )}
             {currentPage === 'completion' && (
-                <div className="completion-content"> 
+                <div className="completion-content">
                     <h2 className="completion-header">Quiz completed!</h2>
                     <p className="score">Your score is: {score}</p>
+                    <p className="time-taken">Time taken: {timeTaken} seconds</p>
                     <h3 className='ans'>Answers Selected:</h3>
                     <ul>
-                
-            {questions.map((question, index) => (
-                <div className='container'>
-                <li key={index} className="question-answer">
-                    {question.question}: <span className={question.selectedOption ? 'selected-answer' : ''}>{question.selectedOption || 'No answer selected'}</span>
-                </li>
-                </div>
-            
-            ))}
-        </ul>
+                        {questions.map((question, index) => (
+                            <div className='container' key={index}>
+                                <li className="question-answer">
+                                    {question.question}: <span className={question.selectedOption ? 'selected-answer' : ''}>{question.selectedOption || 'No answer selected'}</span>
+                                </li>
+                            </div>
+                        ))}
+                    </ul>
                 </div>
             )}
         </div>
     );
 }
 
+export default Quizpage;
 
-export default Quizpage
