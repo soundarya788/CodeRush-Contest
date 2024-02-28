@@ -104,7 +104,16 @@ function Quizpage() {
         }
     }, [redirect]);
 
-    const timeTaken = startTime ? ((new Date() - startTime) / 1000).toFixed(0) : 'N/A';
+    const calculateTimeTaken = () => {
+        if (startTime) {
+            const endTime = new Date();
+            const differenceInSeconds = Math.floor((endTime - startTime) / 1000);
+            return differenceInSeconds;
+        }
+        return null;
+    };
+
+    const timeTaken = calculateTimeTaken();
 
     return (
         <div className="quiz-container">
@@ -132,7 +141,8 @@ function Quizpage() {
                         {questions.map((question, index) => (
                             <div className='container' key={index}>
                                 <li className="question-answer">
-                                    {question.question}: <span className={question.selectedOption ? 'selected-answer' : ''}>{question.selectedOption || 'No answer selected'}</span>
+                                    {question.question}: <span className={question.selectedOption ? 'selected-answer' : ''}>
+                                        {question.selectedOption || 'No answer selected'}</span>
                                 </li>
                             </div>
                         ))}
@@ -144,4 +154,9 @@ function Quizpage() {
 }
 
 export default Quizpage;
+
+
+
+
+
 
